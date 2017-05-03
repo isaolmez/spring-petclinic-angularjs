@@ -19,7 +19,7 @@
     <script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
 
     <script th:src="@{/angular/angular.js}"></script>
-    <script th:src="@{/angular-ui-router/release/angular-ui-router.min.js}"></script>
+    <script th:src="@{/angular-route/angular-route.min.js}"></script>
 
     <script th:src="@{/scripts/app.js}"></script>
     <script th:src="@{/scripts/services/owner-service.js}"></script>
@@ -40,13 +40,55 @@
 </head>
 
 <body class="container">
-<div ui-view="header"></div>
+<nav class="navbar navbar-default" role="navigation">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="#"><span></span></a>
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+            <span class="sr-only"><os-p>Toggle navigation</os-p></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+    </div>
+    <div class="navbar-collapse collapse" id="main-navbar">
+        <ul class="nav navbar-nav navbar-right">
+            <li ng-href-active="active">
+                <a ng-href="#/welcome" title="home page">
+                    <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+                    <span>Home</span>
+                </a>
+            </li>
+
+            <li ng-href-active="active" class="dropdown">
+                <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                   aria-haspopup="true" aria-expanded="false">Owners<span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a ng-href="#/owners"><span class="glyphicon glyphicon-search" aria-hidden="true"></span><span> All</span></a></li>
+                    <li><a ng-href="#/owners/new"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><span> Register</span></a></li>
+                </ul>
+            </li>
+
+            <li ng-href-active="active">
+                <a ng-href="/vets" title="veterinarians">
+                    <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                    <span>Veterinarians</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
 <div class="container-fluid">
     <div class="container xd-container">
-        <div ui-view="content"></div>
+        <div ng-view=""></div>
     </div>
 </div>
-<div ui-view="footer"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-12 text-center"><img src="/images/spring-pivotal-logo.png"
+                                             alt="Sponsored by Pivotal"/></div>
+    </div>
+</div>
 </body>
 
 </html>

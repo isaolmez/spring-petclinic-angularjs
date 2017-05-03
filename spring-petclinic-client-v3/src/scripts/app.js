@@ -17,6 +17,15 @@ var petClinicApp = angular.module('petClinicApp', ['ui.router'])
             }
         }
     })
+    .state('welcome', {
+        parent : 'app',
+        url : '/welcome',
+        views : {
+            'content@' : {
+                templateUrl : 'scripts/fragments/welcome.html'
+            }
+        }
+    })
     .state('owners', {
         parent : 'app',
         url : '/owners',

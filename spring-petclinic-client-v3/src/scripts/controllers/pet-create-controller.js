@@ -1,5 +1,5 @@
-angular.module('petClinicApp').controller('PetCreateController', ['$stateParams', '$location', '$scope', 'petService', 'ownerService',
-function($stateParams, $location, $scope, petService, ownerService){
+angular.module('petClinicApp').controller('PetCreateController', ['$stateParams', '$state', '$scope', 'petService', 'ownerService',
+function($stateParams, $state, $scope, petService, ownerService){
     var ownerId = $stateParams.ownerId || 0;
     var petId = $stateParams.petId || 0;
     $scope.pet = {};
@@ -15,7 +15,7 @@ function($stateParams, $location, $scope, petService, ownerService){
 
     $scope.submit = function(){
         petService.createPet(ownerId, $scope.pet).then(function(){
-            $location.url('/owners/' + ownerId);
+            $state.go('ownerDetails', {'ownerId' : ownerId});
         });
     }
 }]);
